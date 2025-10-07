@@ -9,6 +9,13 @@ pipeline{
             sh 'mvn clean validate compile install test package'
             }
         }
+        stage('Upload Artifacts'){
+            steps{
+                sh 'curl -uadmin:AP7iKibFPukTLYzjaqQWMbvj12T -T \
+                target/bio*.jar \
+                "http://ec2-54-167-1-24.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
+            }
+        }
     }
     
 }
