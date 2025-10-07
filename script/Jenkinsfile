@@ -4,14 +4,14 @@ pipeline{
         maven 'M2_HOME'   
     }
     stages{
-        /*  stage('Sonar-Scan'){
+         stage('Sonar-Scan'){
             steps{
                 withSonarQubeEnv('SonarQube'){
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=NeneOps_dev-geo'
                 }
                 
             }
-        }*/
+        }
         stage("maven-steps"){
             steps{
             sh 'mvn clean validate compile install test package'
